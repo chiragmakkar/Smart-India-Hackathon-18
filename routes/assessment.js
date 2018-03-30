@@ -5,6 +5,6 @@ const jwt = require('jsonwebtoken')
 const config = require(__base + 'system/config.js')
 
 /* Page Routes */
-router.post('/vector', require(__base + 'modules/Asst/gMatrix.js'))
+router.post('/vector', require(__base + 'modules/est/gMatrix.js'))
 
 module.exports = router
