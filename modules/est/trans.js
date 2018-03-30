@@ -10,6 +10,7 @@ const getEstimation = (req,res) => {
     let co = geo(req.body.address)
     co.then((out) => {
         let co = out.results[0].geometry.location
+        let rl = req.body.capacity
         let allowedNodes = []
         var ec = 0
 
@@ -20,7 +21,7 @@ const getEstimation = (req,res) => {
           else {
             data.forEach((e) => {
               if(rad(co.lat,co.lng,e.location.lattitude,e.location.longitude) <= 100) {
-                if(e.currentCapacity <= (70/100)*e.maxCapacity) {
+                if(e.currentCapacity + parseInt(rl) <= (70/100)*e.maxCapacity) {
                   allowedNodes.push(e)
                 }
                 else {
@@ -63,8 +64,10 @@ const getEstimation = (req,res) => {
                   "lng":co.lng
                 }
               },
+              "distance":initDist,
               "estimatedCost":parseInt(finalEst),
               "freeCapacity":minNode.maxCapacity-minNode.currentCapacity,
+              "reqCapacity":parseInt(rl),
               "provider":minNode.provider
             }
             if(!allowedNodes) {
