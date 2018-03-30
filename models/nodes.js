@@ -7,7 +7,9 @@ const nodes = new schema({
       "longitude":Number
     },
     "maxCapacity":Number,
-    "currentCapacity":Number
+    "currentCapacity":Number,
+    "provider":String,
+    "rate":Number
 })
 
 module.exports = mongoose.model('Nodes',nodes)

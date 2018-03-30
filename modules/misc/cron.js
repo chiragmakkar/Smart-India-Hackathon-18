@@ -8,7 +8,6 @@ const task = cron.schedule('*/29 * * * *', () => {
       console.log(error)
     }
     let current = {
-      "statusCode":response.statusCode,
       "body":body
     }
   }, false);

@@ -8,7 +8,9 @@ const inputNodes = (req,res) => {
       "longitude":req.body.lon
     },
     "maxCapacity":req.body.mc,
-    "currentCapacity":req.body.cc
+    "currentCapacity":req.body.cc,
+    "provider":req.body.provider,
+    "rate":req.body.rate
   })
   newNode.save((err,data) => {
     if(err) {

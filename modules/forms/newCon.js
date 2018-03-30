@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 
 const Consumer = require(__base  + 'models/consumer.js').consumer
 
-const stat = require('./rand.js')
+const stat = require(__base + 'modules/misc/rand.js').static
 
 const newCon = (req,res) => {
         let newApplication = new Consumer({
-          "ApplicationID":stat(),
+          "ApplicationID":stat(11),
           "consumerDetails":
               {
                   "applicantName": req.body.applicantName,

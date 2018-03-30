@@ -5,6 +5,6 @@ const jwt = require('jsonwebtoken')
 const config = require(__base + 'system/config.js')
 
 /* Page Routes */
-router.post('/vector', require(__base + 'modules/est/dist.js'))
+router.post('/est', require(__base + 'modules/est/trans.js'))
 
 module.exports = router

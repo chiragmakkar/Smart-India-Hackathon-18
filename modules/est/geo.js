@@ -1,11 +1,11 @@
 const request = require('request')
 const config = require(__base + 'system/config.js')
 
-const apiKey = config.details.api.distanceMatrix
+const apiKey = config.details.api.geocode
 
-const calcDistInMatrix = (from,to) => {
+const geoMatrix = (addr) => {
     var options = {
-        url: "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+from+"&destinations="+to+"&key="+apiKey,
+        url: "https://maps.googleapis.com/maps/api/geocode/json?address="+addr+"&key="+apiKey,
         headers: {
             'User-Agent': 'request'
         }
@@ -22,5 +22,4 @@ const calcDistInMatrix = (from,to) => {
     })
 }
 
-
-module.exports = calcDistInMatrix
+module.exports = geoMatrix
