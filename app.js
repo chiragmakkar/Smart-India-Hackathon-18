@@ -33,11 +33,13 @@ if(config.settings.xors) {
 const stat = require('./routes/basic.js')
 const auth = require('./routes/auth.js')
 const asMat = require('./routes/assessment.js')
+const conRou = require('./routes/consumer.js')
 
 /* Active Page Routes */
 app.use('/',stat)
 app.use('/auth',auth)
 app.use('/matrix', asMat)
+app.use('/connection',conRou)
 
 /* oAuth configuration */
 if(config.settings.oauth) {
