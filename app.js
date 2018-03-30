@@ -50,6 +50,6 @@ if(config.settings.oauth) {
   //app.use('/oauth',oauth)
 }
 
-let alive = require(__base + 'modules/misc/cron.js')
+//let alive = require(__base + 'modules/misc/cron.js')
 
 module.exports = app

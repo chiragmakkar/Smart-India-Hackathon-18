@@ -14,16 +14,16 @@ const auth = (req,res,next) => {
   if (token) {
 		// verifies secret and checks exp
 		jwt.verify(token, config.details.Secret, (err1, decoded) => {
-      authModel.findOne({"userName":decoded.username}, (err2,user) => {
-        if ((err1||err2)||(user.token !== token)||(!token)) {
-  				return res.json({ success: false, message: 'Failed to authenticate token.' });
-  			}
-        else {
-  				// if everything is good, save to request for use in other routes
-  				req.decoded = decoded;
-  				next();
-  			}
-      });
+			authModel.findOne({"userName":decoded.username}, (err2,user) => {
+				if ((err1||err2)||(user.token !== token)||(!token)) {
+					return res.json({ success: false, message: 'Failed to authenticate token.' });
+				}
+				else {
+					// if everything is good, save to request for use in other routes
+					req.decoded = decoded;
+					next();
+				}
+			});
 		});
 
 	}

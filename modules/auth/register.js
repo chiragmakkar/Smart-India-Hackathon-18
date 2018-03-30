@@ -30,7 +30,8 @@ const newUser = (req,res) => {
               "email_verified":false,
               "phone_verified":false,
               "OTP_Mobile":otp,
-              "emailCode":emCode
+              "emailCode":emCode,
+              "userType":"consumer"
             })
             User.save((err,data) => {
               if (err) {

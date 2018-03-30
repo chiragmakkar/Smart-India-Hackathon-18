@@ -14,16 +14,21 @@ db.once("createConnection", () => {
     console.log("MongoDB Connection Succeeded") //DB connection success
 })
 
+const auth = require(__base + 'modules/auth/protect.js');
+
 //Saving New Application Data In mongoosegoDb
-router.post('/new', require(__base + 'modules/forms/newCon.js'))
+router.post('/new', auth, require(__base + 'modules/forms/newCon.js'))
+
+//My connections
+router.post('/mycon', auth, require('../modules/forms/myCon'))
 
 //testing part
-router.put('/transfer', require(__base + 'modules/forms/transferCon.js'))
+router.put('/transfer', auth, require(__base + 'modules/forms/transferCon.js'))
 
 //for closure of connection
-router.patch('/closure', require(__base + 'modules/forms/closeCon.js'))
+router.patch('/closure', auth, require(__base + 'modules/forms/closeCon.js'))
 
 //for deleting connection
-router.delete('/delete', require(__base + 'modules/forms/deleteCon.js'))
+router.delete('/delete', auth, require(__base + 'modules/forms/deleteCon.js'))
 
 module.exports = router;

@@ -32,19 +32,26 @@ const checkUser = (req,res) => {
             }
 
             else {
-              var token = user.token;
+              // var token = user.token;
+              var token = jwt.sign(filteredUser, config.details.Secret, {
+                expiresIn: 86400 // expires in 24 hours
+               });
             }
 
             authModel.findOneAndUpdate({"userName": req.body.username}, {$set:{token:token}}, {new: true}, (err, doc) => {
               if(err){
-                console.log("Something wrong when updating data!");
+                console.log("Something went wrong when updating data!");
               }
             });
 
 				    res.json({
 					       success: true,
 					       message: 'Authenticated',
-					       token: token
+                 token: token,
+                 fullName: user.fullName,
+                 userName: user.userName,
+                 email: user.email,
+                 phone: user.phone
 				     });
            }
            else {
