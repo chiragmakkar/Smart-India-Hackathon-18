@@ -21,7 +21,7 @@ POST | /auth/verify/phone/:username | otp | Success/Error Message
 POST | /auth/login | username, password | Success Message -> Token or Error Message
 GET | /auth/logout | token (Header: x-access-token) or Params | Success/Error Message
 POST | /auth/change-password | token, oldPassword, newPassword | Success/Error Message
-GET | /matrix/vector | from, to | Location Data (Ajax - Google)
+POST | /matrix/est | Address | Rate Object
 
 ## To-do List
 
