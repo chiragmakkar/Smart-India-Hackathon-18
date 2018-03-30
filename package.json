@@ -1,0 +1,44 @@
+{
+  "name": "fitzgerald",
+  "version": "1.0.0",
+  "description": "This is the complete back-end package developed in conjuction with the parameters declared in the SRS for GOG in SIH 18.",
+  "main": "system/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node system/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aadityachakravarty/Fitzgerald.git"
+  },
+  "keywords": [
+    "GIS",
+    "GPS",
+    "Navigation",
+    "Estimation"
+  ],
+  "author": "Team ENV!$!ON",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aadityachakravarty/Fitzgerald/issues"
+  },
+  "homepage": "https://github.com/aadityachakravarty/Fitzgerald#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "^5.0.9",
+    "nexmo": "^2.2.0",
+    "node-cron": "^1.2.1",
+    "nodemailer": "^4.6.2",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "request": "^2.85.0"
+  },
+  "devDependencies": {
+    "express-session": "^1.15.6",
+    "grant-express": "^4.1.0",
+    "mocha": "^5.0.4",
+    "twilio": "^3.13.1"
+  }
+}
