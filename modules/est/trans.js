@@ -19,7 +19,7 @@ const getEstimation = (req,res) => {
           }
           else {
             data.forEach((e) => {
-              if(rad(co.lat,co.lng,e.location.lattitude,e.location.longitude) <= 1) {
+              if(rad(co.lat,co.lng,e.location.lattitude,e.location.longitude) <= 10000) {
                 if((e.maxCapacity - e.currentCapacity) > req_capacity) {
                   allowedNodes.push(e)
                 }
@@ -36,7 +36,7 @@ const getEstimation = (req,res) => {
 
               let dist = rad(co.lat,co.lng,e.location.lattitude,e.location.longitude)
               let currEstimate = 2500+(e.rate*dist*1000);
-            
+
               if(currEstimate < estimate) {
                 maxNode = e
                 estimate = dist*rate
