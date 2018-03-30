@@ -56,7 +56,7 @@ const checkUser = (req,res) => {
            }
          }
         else {
-          res.err('Authentication failed. Wrong password.')
+          res.json({ success: false, message: 'Authentication failed. Wrong Password.' })
         }
       })
     }
