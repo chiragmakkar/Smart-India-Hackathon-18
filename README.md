@@ -22,7 +22,7 @@ POST | /auth/login | username, password | Success Message -> Token or Error Mess
 GET | /auth/logout | token (Header: x-access-token) or Params | Success/Error Message
 POST | /auth/change-password | token, oldPassword, newPassword | Success/Error Message
 POST | /matrix/est | Address | Rate Object
-POST | /connection/new | applicantName,father_husbandName,connectionAddress,contactNumber,emailAddress,permanentAddress,aadharNumber,connectionCategory,connectionType,loadDemand,voltageSupply | Success/Error Message
+POST | /connection/new | applicantName, father_husbandName, connectionAddress, contactNumber, emailAddress, permanentAddress, aadharNumber, connectionCategory, connectionType, loadDemand, voltageSupply | Success/Error Message
 POST | /connection/transfer | applicationID,transferName,aadhar,address | updatedData Object / Error Message
 POST | /connection/closure | applicationID,billNumber,billAmount,reason | updatedData Object / Error Message
 POST | /connection/delete | applicationID | Success /Error Message
