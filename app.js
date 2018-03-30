@@ -34,12 +34,15 @@ const stat = require('./routes/basic.js')
 const auth = require('./routes/auth.js')
 const asMat = require('./routes/assessment.js')
 const conRou = require('./routes/consumer.js')
+const dummy = require('./routes/dummy.js')
 
 /* Active Page Routes */
 app.use('/',stat)
 app.use('/auth',auth)
 app.use('/matrix', asMat)
 app.use('/connection',conRou)
+app.use('/dummy', dummy)
+
 
 /* oAuth configuration */
 if(config.settings.oauth) {

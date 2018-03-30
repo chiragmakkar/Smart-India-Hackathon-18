@@ -1,6 +1,8 @@
 const request = require('request')
 const config = require(__base + 'system/config.js')
 
+const getNodes = require('./trans.js')
+
 const calcDistInMatrix = (req,res) => {
   let location = req.body.from //"Vancouver+BC|Seattle"
   let nearTrans = req.body.to //Get location of nearest khamba.
@@ -9,7 +11,8 @@ const calcDistInMatrix = (req,res) => {
 
   request(url, (error, response, body) => {
     let outObj = JSON.parse(body)
-    res.json(outObj)
+    console.log(getNodes(76,78))
+    res.json({"Objects":outObj})
   })
 }
 
