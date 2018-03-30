@@ -11,7 +11,8 @@ var auth = new schema({
     "phone_verified":Boolean,
     "token":String,
     "OTP_Mobile":Number,
-    "emailCode":String
+    "emailCode":String,
+    "changePwdCode":String
 })
 
 module.exports = mongoose.model('Auth',auth)
