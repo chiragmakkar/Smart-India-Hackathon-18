@@ -28,14 +28,15 @@ const closureCon = (req,res) => {
 
       else {
         data.save((err,updatedData)=>{
-          if(err) {
-            console.log(err);
-            res.status(500).send("Update failed");
-          }
-          else {
-            res.status(200).json(updatedData);
-            //console.log(updatedData);
-          }
+          Consumer.findOne({"ApplicationID":req.body.applicationID}, (err, data) => {
+            if(err){
+              console.log(err)
+              res.status(500).send(err)
+            }
+            else{
+              res.status(200).json(data)
+            }
+          })
         });
       }// nested else finish
     }

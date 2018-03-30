@@ -35,6 +35,7 @@ const auth = require('./routes/auth.js')
 const asMat = require('./routes/assessment.js')
 const conRou = require('./routes/consumer.js')
 const dummy = require('./routes/dummy.js')
+const employee = require('./routes/employee')
 
 /* Active Page Routes */
 app.use('/',stat)
@@ -42,7 +43,7 @@ app.use('/auth',auth)
 app.use('/matrix', asMat)
 app.use('/connection',conRou)
 app.use('/dummy', dummy)
-
+app.use('/employee', employee)
 
 /* oAuth configuration */
 if(config.settings.oauth) {

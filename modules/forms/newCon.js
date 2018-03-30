@@ -21,6 +21,14 @@ const newCon = (req,res) => {
                   "loadDemand": req.body.loadDemand,
                   "voltageSupply": req.body.voltageSupply,
                   "statusOfApplication": false
+              },
+              "applicationTracking": {
+                  "userSubmitted": true,
+                  "veriFinance": false,
+                  "veriFinErr": false,
+                  "techPro": false,
+                  "emPro": false,
+                  "completed": false
               }
           })
         newApplication.save((error) => {

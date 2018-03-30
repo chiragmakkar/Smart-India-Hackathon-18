@@ -30,10 +30,19 @@ const Schema = mongoose.Schema;
           "isTransferCompleted" : Boolean
       },
       "closureOfConnection" : {
-              "lastBillNumber" : Number,
-              "lastBillAmount" : Number,
-              "reasonOfClosure" : String,
-              "isClosureApproved" : Boolean
+            "lastBillNumber" : Number,
+            "lastBillAmount" : Number,
+            "reasonOfClosure" : String,
+            "isClosureApproved" : Boolean
+      },
+      "applicationTracking": {
+          "userSubmitted": Boolean,
+          "veriFinance": Boolean,
+          "veriErr": Boolean,
+          "finErr": Boolean,
+          "techPro": Boolean,
+          "emPro": Boolean,
+          "completed": Boolean
       }
 })
 
