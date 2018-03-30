@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 
 const authModel = require(__base + 'models/auth.js')
+const oauthModel = require(__base + 'models/oauth.js')
 const config = require(__base + 'system/config.js')
 
 const app = require(__base + 'app.js')
@@ -14,16 +15,30 @@ const auth = (req,res,next) => {
   if (token) {
 		// verifies secret and checks exp
 		jwt.verify(token, config.details.Secret, (err1, decoded) => {
-			authModel.findOne({"userName":decoded.username}, (err2,user) => {
-				if ((err1||err2)||(user.token !== token)||(!token)) {
-					return res.json({ success: false, message: 'Failed to authenticate token.' });
-				}
-				else {
-					// if everything is good, save to request for use in other routes
-					req.decoded = decoded;
-					next();
-				}
-			});
+			if(decoded.type) {
+				oauthModel.findOne({"userName":decoded.username}, (err2,user) => {
+					if ((err1||err2)||(user.token !== token)||(!token)) {
+						return res.json({ type:true, success: false, message: 'Failed to authenticate token.' });
+					}
+					else {
+						// if everything is good, save to request for use in other routes
+						req.decoded = decoded;
+						next();
+					}
+				});
+			}
+			else {
+				authModel.findOne({"userName":decoded.username}, (err2,user) => {
+					if ((err1||err2)||(user.token !== token)||(!token)) {
+						return res.json({ type:false, success: false, message: 'Failed to authenticate token.' });
+					}
+					else {
+						// if everything is good, save to request for use in other routes
+						req.decoded = decoded;
+						next();
+					}
+				});
+			}
 		});
 
 	}

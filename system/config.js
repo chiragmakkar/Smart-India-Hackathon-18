@@ -27,10 +27,10 @@ const details = {
 
 const settings = {
   "protocol":"https",
-  "host":"api.nvixion.tech",
+  "host":"api-egn.nvixion.tech",
   "port":3000,
   "xors":true,
-  "oauth":false,
+  "oauth":true,
   "verification":{
     "sms":true,
     "email":true
@@ -39,24 +39,9 @@ const settings = {
 }
 
 const oauth = {
-  "facebook": {
-    "key": "160775371250060",
-    "secret": "86ac4ee355cceaecffd7c773a134c800",
-    "callback": "http://127.0.0.1:3000/oauth/facebook/callback",
-    "scope": [
-      "user_groups",
-      "user_likes"
-    ]
-  },
-  "twitter": {
-    "key": "upiBpP9vJXo5fPAcJAj4xmlq9",
-    "secret": "XBevC2WJXz3NTyj5AhlNd0g0uRtkdwgiKNI5k1euX8l6iUMKHC",
-    "callback": "http://127.0.0.1:3000/oauth/twitter/callback"
-  },
   "google": {
-    "key": "",
-    "secret": "",
-    "callback": "/oauth/google"
+    "clientID": '633810201853-gr3g2ajr4fdhbee4a23r5j99hql4vpkv.apps.googleusercontent.com',
+    "clientSecret": 'R0tkBMtw0b_Qi8-UTs9sXgui'
   }
 }
 

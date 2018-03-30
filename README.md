@@ -36,8 +36,6 @@ POST | /connection/delete | applicationID | Success /Error Message
 
 * Organize client side redirects.
 
-* Set up generalized rand generation.
-
 ## Application URL
 
 > https://api-egn.nvixion.tech

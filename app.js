@@ -1,11 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const passport = require('passport')
 
 /* Global Path setup for easy require */
 global.__base = __dirname + '/';
 
 const config = require(__base + 'system/config.js')
+const passportSetup = require(__base + 'modules/oauth/passport-setup')
 
 /* Mongoose connection */
 mongoose.connect(config.details.database.mlab)
@@ -17,6 +19,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended:true
 }))
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.set('superSecret', config.details.Secret)
 
@@ -47,8 +53,8 @@ app.use('/employee', employee)
 
 /* oAuth configuration */
 if(config.settings.oauth) {
-  //const oauth = require('./routes/oauth.js')
-  //app.use('/oauth',oauth)
+  const oauth = require('./routes/oauth.js')
+  app.use('/oauth',oauth)
 }
 
 //let alive = require(__base + 'modules/misc/cron.js')

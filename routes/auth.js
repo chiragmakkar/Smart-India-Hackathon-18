@@ -1,14 +1,21 @@
 const express = require('express')
 const router = express.Router()
+const passport = require('passport');
 
 const jwt = require('jsonwebtoken')
 const config = require(__base + 'system/config.js')
 
+/* Passport Routes */
+
+router.get('/google', passport.authenticate('google', {scope: ['profile email']}))
+
+router.get('/google/redirect', passport.authenticate('google'), require(__base + 'modules/oauth/google-handler.js'))
+
 /* Page Routes */
 
-router.post('/register', require(__base + '/modules/auth/register.js'))
+router.post('/register', require(__base + 'modules/auth/register.js'))
 
-router.post('/login', require(__base + '/modules/auth/login.js'))
+router.post('/login', require(__base + 'modules/auth/login.js'))
 
 router.post('/forgotpassword', require(__base + 'modules/auth/forgotPassword.js'))
 

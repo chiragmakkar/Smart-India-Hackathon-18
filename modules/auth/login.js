@@ -18,11 +18,12 @@ const checkUser = (req,res) => {
     else {
       bcrypt.compare(req.body.password, user.password, (err, result) => {
         if(result == true) {
-          if((user.email_verified || user.phone_verified) == true) {
+          if(user.email_verified || user.phone_verified) {
             let filteredUser = {
               "fullName":user.fullName,
               "username":user.userName,
-              "email":user.email
+              "email":user.email,
+              "type":false
             }
 
             if(!user.token) {
@@ -38,20 +39,16 @@ const checkUser = (req,res) => {
                });
             }
 
-            authModel.findOneAndUpdate({"userName": req.body.username}, {$set:{token:token}}, {new: true}, (err, doc) => {
+            authModel.findOneAndUpdate({$or: [{"userName":req.body.username}, {"email":req.body.username}, {"phone":req.body.username}]}, {$set:{token:token}}, {new: true}, (err, doc) => {
               if(err){
                 console.log("Something went wrong when updating data!");
               }
             });
 
 				    res.json({
-					       success: true,
-					       message: 'Authenticated',
-                 token: token,
-                 fullName: user.fullName,
-                 userName: user.userName,
-                 email: user.email,
-                 phone: user.phone
+					       "success": true,
+					       "message": 'Authenticated',
+                 "token": token
 				     });
            }
            else {
