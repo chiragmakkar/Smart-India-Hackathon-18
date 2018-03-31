@@ -1,0 +1,14 @@
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+      var socket = io();
+      socket.on('generated notification', notificationString => {
+        // show the notification
+        var notification = new Notification('Notification',{
+          title: 'notificationString',
+        });
+      });
+    });
+</script>
