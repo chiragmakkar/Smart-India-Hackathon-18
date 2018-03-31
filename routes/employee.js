@@ -13,4 +13,6 @@ router.post('/updatestatus', auth, require('../modules/employee/updateStatus'))
 
 router.post('/verified', auth, require('../modules/employee/verified'))
 
+router.post('/notverified', auth, require('../modules/employee/notverified'))
+
 module.exports = router;
