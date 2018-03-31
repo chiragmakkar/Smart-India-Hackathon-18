@@ -23,6 +23,9 @@ router.post('/mycon', auth, require('../modules/forms/myCon'))
 //Update Connection
 router.post('/update', auth, require('../modules/forms/updateCon'))
 
+//Track Connection
+router.post('/track', auth, require('../modules/forms/track'))
+
 //testing part
 router.put('/transfer', auth, require(__base + 'modules/forms/transferCon.js'))
 

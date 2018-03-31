@@ -41,7 +41,6 @@ const Schema = mongoose.Schema;
           "userSubmitted": Boolean,
           "veriFinance": Boolean,
           "veriErr": Boolean,
-          "finErr": Boolean,
           "techPro": Boolean,
           "emPro": Boolean,
           "completed": Boolean
