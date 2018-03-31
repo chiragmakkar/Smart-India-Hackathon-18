@@ -8,7 +8,8 @@ const gHandler = (req,res) => {
     "fullName":user.fullName,
     "username":user.userName,
     "email":user.email,
-    "type":true
+    "type":user.userType,
+    "oauth":true
   }
   let token = jwt.sign(filteredUser, config.details.Secret, {
      expiresIn: 86400 // expires in 24 hours

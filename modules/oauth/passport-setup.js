@@ -29,7 +29,7 @@ passport.use(
                   "fullName":profile.displayName,
                   "userName":profile.id,
                   "email":profile.emails[0].value,
-                  "userType":"Consumer"
+                  "userType":"consumer"
                 }).save().then((newUser) => {
                     console.log('created new user: ', newUser);
                     done(null, newUser);

@@ -23,8 +23,6 @@ app.use(bodyParser.urlencoded({
   limit: '5mb'
 }))
 
-app.use(express.static('public'))
-
 // initialize passport
 app.use(passport.initialize());
 app.use(passport.session());

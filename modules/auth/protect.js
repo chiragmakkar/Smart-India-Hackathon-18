@@ -15,7 +15,7 @@ const auth = (req,res,next) => {
   if (token) {
 		// verifies secret and checks exp
 		jwt.verify(token, config.details.Secret, (err1, decoded) => {
-			if(decoded.type) {
+			if(decoded.oauth) {
 				oauthModel.findOne({"userName":decoded.username}, (err2,user) => {
 					if ((err1||err2)||(user.token !== token)||(!token)) {
 						return res.json({ type:true, success: false, message: 'Failed to authenticate token.' });

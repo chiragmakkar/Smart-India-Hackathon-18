@@ -17,15 +17,14 @@ const checkUser = (req,res) => {
     }
     else {
       bcrypt.compare(req.body.password, user.password, (err, result) => {
-        if(result == true) {
+        if(result) {
           if(user.email_verified || user.phone_verified) {
             let filteredUser = {
               "fullName":user.fullName,
               "username":user.userName,
               "email":user.email,
-              "type":false
+              "type":user.userType
             }
-
             if(!user.token) {
               var token = jwt.sign(filteredUser, config.details.Secret, {
 					     expiresIn: 86400 // expires in 24 hours
@@ -45,8 +44,7 @@ const checkUser = (req,res) => {
 				    res.json({
 					       "success": true,
 					       "message": 'Authenticated',
-                 "token": token,
-                 "email":user.email
+                 "token": token
 				     });
            }
            else {

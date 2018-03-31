@@ -11,7 +11,8 @@ const app = require(__base + 'app.js')
 
 const logoutUser = (req,res) => {
   let username = req.decoded.username;
-  let type = req.decoded.type || false
+  console.log(username)
+  let type = req.decoded.oauth || false
   if(type) {
     req.logout()
     oauthModel.findOneAndUpdate({"userName": username}, {$unset: {"token": 1 }}, {new: true}, (err, doc) => {
