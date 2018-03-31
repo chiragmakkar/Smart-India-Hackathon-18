@@ -41,7 +41,8 @@ router.post('/uploadDoc',upload.single('documentImage'),(req,res)=>{
         if(err) console.log(err)
 
         else{
-            require('../modules/misc/uploadToS3')(data)
+            res.send(req.file.path)
+            //require('../modules/misc/uploadToS3')(data)
         }
     })
 });

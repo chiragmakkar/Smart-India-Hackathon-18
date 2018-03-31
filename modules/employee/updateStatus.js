@@ -8,15 +8,12 @@ const updateStatus = (req, res) => {
             let verify = new appStatus({
                 "ApplicationID": req.body.applicationId,
                 "verification": {
-                    "empId": req.body.username,
                     "status": req.body.status
                 },
                 "finance": {
-                    "empId": "",
                     "status": false
                 },
                 "technical": {
-                    "empId": "",
                     "status": false
                 }
             })
@@ -43,12 +40,20 @@ const updateStatus = (req, res) => {
                     }
                 }
             })
+            if(!req.body.status){
+                appStatus.findOneAndUpdate({ "ApplicationID": req.body.applicationId }, {
+                    $set: {
+                        "applicationTracking": {
+                            "veriErr": false
+                        }
+                    }
+                })
+            }
         }
         else if (req.body.userType == 't') {
             appStatus.findOneAndUpdate({ "ApplicationID": req.body.applicationId }, {
                 $set: {
                     "technical": {
-                        "empId": req.body.username,
                         "status": req.body.status
                     }
                 }
