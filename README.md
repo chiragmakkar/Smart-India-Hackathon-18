@@ -28,6 +28,7 @@ POST | /auth/verify/phone/:username | otp | Success/Error Message
 POST | /auth/login | username, password | Success Message -> Token or Error Message
 GET | /auth/logout | token (Header: x-access-token) or Params | Success/Error Message
 POST | /auth/change-password | token, oldPassword, newPassword | Success/Error Message
+GET | /auth/status | token | Success/Error Message
 
 ### Estimation Routes
 
