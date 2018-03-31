@@ -12,7 +12,7 @@ const getEstimation = (req,res) => {
     co.then((out) => {
         let co = out.results[0].geometry.location
         let rl = req.body.capacity
-        let ph = "+91"+req.body.phone
+        let ph = req.body.phone
         let allowedNodes = []
         var ec = 0
 
