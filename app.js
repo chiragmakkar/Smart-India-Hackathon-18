@@ -30,13 +30,12 @@ app.use(passport.session());
 app.set('superSecret', config.details.Secret)
 
 /* Global Cross-Origin Access */
-if(config.settings.xors) {
-  app.use((req, res, next) => {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      next();
-  })
-}
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+})
+
 
 /* Important Page routes */
 const stat = require('./routes/basic.js')
@@ -58,12 +57,7 @@ app.use('/connection',conRou)
 app.use('/dummy', dummy)
 app.use('/employee', employee)
 app.use('/load', balancer)
-
-/* oAuth configuration */
-if(config.settings.oauth) {
-
-  app.use('/oauth',oauth)
-}
+app.use('/oauth',oauth)
 
 //let alive = require(__base + 'modules/misc/cron.js')
 

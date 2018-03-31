@@ -29,8 +29,6 @@ const settings = {
   "protocol":"https",
   "host":"api-egn.nvixion.tech",
   "port":3000,
-  "xors":true,
-  "oauth":true,
   "verification":{
     "sms":true,
     "email":true
