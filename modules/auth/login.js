@@ -45,7 +45,8 @@ const checkUser = (req,res) => {
 				    res.json({
 					       "success": true,
 					       "message": 'Authenticated',
-                 "token": token
+                 "token": token,
+                 "email":user.email
 				     });
            }
            else {
