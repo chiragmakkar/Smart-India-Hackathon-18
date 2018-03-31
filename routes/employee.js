@@ -11,4 +11,6 @@ router.post('/andro-apps', require('../modules/employee/andro'))
 //Update Status
 router.post('/updatestatus', auth, require('../modules/employee/updateStatus'))
 
+router.get('/verified', auth, require('../modules/employee/verified'))
+
 module.exports = router;
