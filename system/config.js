@@ -4,9 +4,9 @@ const details = {
     "local":"mongodb://localhost:27017/Fitzgerald"
   },
   "Twilio": {
-    "SID":"ACfef32ed89b6d972cd6751aa6f7d500d5",
-    "Token":"2a30374e77a9c287a7f68b3bc33ed8e8",
-    "Number":"+12673102643"
+    "SID":"ACd6f65cc911fcdc962f135329daae28db",
+    "Token":"3f1c2754f33f92a54a10c96401cc0e40",
+    "Number":"+19493046593"
   },
   "Nexmo" :{
     "key":"bf385b2e",

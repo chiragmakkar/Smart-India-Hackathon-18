@@ -1,17 +1,18 @@
+const Nexmo = require('nexmo')
 const config = require(__base + 'system/config.js')
-const client = require('twilio')(config.details.Twilio.SID, config.details.Twilio.Token)
 
-const sendSMS = (number, code) => {
-  client.messages.create({
-    to: number,
-    from: config.details.Twilio.Number,
-    body: "Your code is "+code,
-  }, (err, message) => {
-    if(err) {
-      console.log(err)
+const nexmo = new Nexmo({
+  apiKey: config.details.Nexmo.key,
+  apiSecret: config.details.Nexmo.secret
+})
+
+const sendSMS = (number, message) => {
+  nexmo.message.sendSms(
+    config.details.Nexmo.number, number, message, {type: 'unicode'},
+    (err, responseData) => {if (responseData) {
+      console.log(responseData)
     }
-    console.log("SMS sent, ID : "+message.sid);
-  })
+  });
 }
 
 module.exports = sendSMS
