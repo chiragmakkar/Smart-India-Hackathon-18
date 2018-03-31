@@ -15,9 +15,12 @@ mongoose.connect(config.details.database.mlab)
 /* Express Instance */
 const app = express()
 
-app.use(bodyParser.json())
+app.use(bodyParser.json({
+  limit: '5mb'
+}))
 app.use(bodyParser.urlencoded({
-  extended:true
+  extended:true,
+  limit: '5mb'
 }))
 
 // initialize passport
