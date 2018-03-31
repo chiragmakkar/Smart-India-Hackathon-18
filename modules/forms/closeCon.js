@@ -3,10 +3,6 @@ const mongoose = require('mongoose')
 const Consumer = require(__base + 'models/consumer.js').consumer
 
 const closureCon = (req,res) => {
-  let updateOps = {}
-  for (let key of Object.keys(req.body)) {
-    updateOps[key] = req.body[key]
-  }
   Consumer.findOneAndUpdate({"ApplicationID":req.body.applicationID},{
       $set:{
         "closureOfConnection" : {

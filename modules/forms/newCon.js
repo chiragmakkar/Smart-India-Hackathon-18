@@ -7,6 +7,7 @@ const stat = require(__base + 'modules/misc/rand.js').static
 const newCon = (req,res) => {
         let newApplication = new Consumer({
           "ApplicationID":stat(11),
+          "status":"new",
           "consumerDetails":
               {
                   "applicantName": req.body.applicantName,

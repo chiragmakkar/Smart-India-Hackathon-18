@@ -8,6 +8,7 @@ const Schema = mongoose.Schema;
          "required":true,
          "unique":true
        },
+       "status":String,
      "consumerDetails":
          {
              "applicantName": String,

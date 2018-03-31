@@ -2,8 +2,6 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 
-const config = require(__base + 'system/config.js')
-
 const auth = require(__base + 'modules/auth/protect.js');
 
 //Saving New Application Data In mongoosegoDb
