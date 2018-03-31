@@ -1,20 +1,21 @@
 var AWS = require('aws-sdk');
 
-var s3 = new AWS.S3();
-
 AWS.config.update({ 
-    "accessKeyId": "AKIAJAQ357JTY5PYX5PA",
-    "secretAccessKey": "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", 
+    "accessKeyId": "AKIAIZPFUWGH7KR6T4MA",
+    "secretAccessKey": "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", 
     "region": "ap-south-1" 
 })
+
+var s3 = new AWS.S3();
 
 // Bucket names must be unique across all S3 users
 
 var myBucket = 'sih-2018';
 
-var myKey = 'new-folder';
 
-const uploadToS3 = (data) => {
+
+const uploadToS3 = (data, extn) => {
+    var myKey = new Date().toISOString() + extn;
     params = { Bucket: myBucket, Key: myKey, Body: data };
 
     s3.putObject(params, function (err, data) {
@@ -31,6 +32,7 @@ const uploadToS3 = (data) => {
         }
 
     });
+    return myKey;
 }
 
 module.exports = uploadToS3;

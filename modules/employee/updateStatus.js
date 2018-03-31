@@ -2,6 +2,8 @@ const mongoose = require("mongoose")
 
 const appStatus = require('../../models/appStatus')
 
+const consumer = require('../../models/consumer')
+
 const updateStatus = (req, res) => {
     if (req.body.applicationId) {
         if (req.body.userType == 'v') {
@@ -33,7 +35,7 @@ const updateStatus = (req, res) => {
                     })
                 }
             })
-            appStatus.findOneAndUpdate({ "ApplicationID": req.body.applicationId }, {
+            consumer.findOneAndUpdate({ "ApplicationID": req.body.applicationId }, {
                 $set: {
                     "applicationTracking": {
                         "veriFinance": req.body.status
@@ -41,7 +43,16 @@ const updateStatus = (req, res) => {
                 }
             })
             if(!req.body.status){
-                appStatus.findOneAndUpdate({ "ApplicationID": req.body.applicationId }, {
+                consumer.findOneAndUpdate({ "ApplicationID": req.body.applicationId }, {
+                    $set: {
+                        "applicationTracking": {
+                            "veriErr": true
+                        }
+                    }
+                })
+            }
+            else{
+                consumer.findOneAndUpdate({ "ApplicationID": req.body.applicationId }, {
                     $set: {
                         "applicationTracking": {
                             "veriErr": false

@@ -23,7 +23,8 @@ const Schema = mongoose.Schema;
              "loadDemand": String,
              "voltageSupply": String,
              "meterNumber": String,
-             "statusOfApplication": Boolean
+             "statusOfApplication": Boolean,
+             "docUrl": String
          },
       "transferApplication" : {
           "transferringToName" : String,
