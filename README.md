@@ -44,9 +44,13 @@ POST | /connection/new | applicantName, father_husbandName, connectionAddress, c
 POST | /connection/transfer | applicationID,transferName,aadhar,address | updatedData Object / Error Message
 POST | /connection/closure | applicationID,billNumber,billAmount,reason | updatedData Object / Error Message
 POST | /connection/delete | applicationID | Success /Error Message
+POST | /connection/update | applicationID, applicantName | data/Error
+POST | /connection/mycon | email | data/Error
 
 
 ## To-do List
+
+* Passport / Oauth Integration
 
 * Finalize models.
 
