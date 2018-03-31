@@ -33,10 +33,7 @@ const checkUser = (req,res) => {
             }
 
             else {
-              // var token = user.token;
-              var token = jwt.sign(filteredUser, config.details.Secret, {
-                expiresIn: 86400 // expires in 24 hours
-               });
+              var token = user.token;
             }
 
             authModel.findOneAndUpdate({$or: [{"userName":req.body.username}, {"email":req.body.username}, {"phone":req.body.username}]}, {$set:{token:token}}, {new: true}, (err, doc) => {

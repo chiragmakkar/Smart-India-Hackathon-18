@@ -35,13 +35,17 @@ if(config.settings.xors) {
   })
 }
 
-/* Import Page routes */
+/* Important Page routes */
 const stat = require('./routes/basic.js')
 const auth = require('./routes/auth.js')
 const asMat = require('./routes/assessment.js')
 const conRou = require('./routes/consumer.js')
+const employee = require('./routes/employee.js')
+const oauth = require('./routes/oauth.js')
+const balancer = require('./routes/loadBalancer.js')
+
+/* Testing page routes */
 const dummy = require('./routes/dummy.js')
-const employee = require('./routes/employee')
 
 /* Active Page Routes */
 app.use('/',stat)
@@ -50,10 +54,11 @@ app.use('/matrix', asMat)
 app.use('/connection',conRou)
 app.use('/dummy', dummy)
 app.use('/employee', employee)
+app.use('/load', balancer)
 
 /* oAuth configuration */
 if(config.settings.oauth) {
-  const oauth = require('./routes/oauth.js')
+
   app.use('/oauth',oauth)
 }
 

@@ -15,9 +15,6 @@ router.post('/mycon', auth, require('../modules/forms/myCon'))
 //Update Connection
 router.post('/update', auth, require('../modules/forms/updateCon'))
 
-//Close Connection
-router.post('/closure', auth, require('../modules/forms/closeCon'))
-
 //testing part
 router.put('/transfer', auth, require(__base + 'modules/forms/transferCon.js'))
 
