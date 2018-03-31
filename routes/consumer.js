@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 const multer = require('multer')
+const fs = require('fs')
 const auth = require(__base + 'modules/auth/protect.js');
 
 const storage=multer.diskStorage({
@@ -33,6 +34,13 @@ router.delete('/delete', auth, require(__base + 'modules/forms/deleteCon.js'))
 
 router.post('/uploadDoc',upload.single('documentImage'),(req,res)=>{
     res.send(req.file.path);
+    fs.readFile(req.file.path, function(err, data){
+        if(err) console.log(err)
+
+        else{
+            require('../modules/misc/uploadToS3')(data)
+        }
+    })
 });
 
 module.exports = router;
