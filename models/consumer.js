@@ -44,7 +44,8 @@ const Schema = mongoose.Schema;
           "veriErr": Boolean,
           "techPro": Boolean,
           "emPro": Boolean,
-          "completed": Boolean
+          "completed": Boolean,
+          "num":0
       }
 })
 

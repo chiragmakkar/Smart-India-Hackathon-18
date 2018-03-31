@@ -7,8 +7,7 @@ const verified = (req, res) => {
         $set: {
             "applicationTracking":
                 {
-                    "userSubmitted": true,
-                    "veriFinance": true
+                    "num": parseInt("applicationTracking.num")+1
                 }
         }, 
     }, (err, data) => {
