@@ -6,6 +6,7 @@ const auth = require(__base + 'modules/auth/protect.js');
 
 //Fetch all applications
 router.post('/apps', auth, require('../modules/employee/applications'))
+router.post('/andro-apps', require('../modules/employee/andro'))
 
 //Update Status
 router.post('/updatestatus', auth, require('../modules/employee/updateStatus'))
