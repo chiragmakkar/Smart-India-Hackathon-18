@@ -7,7 +7,7 @@ const notverified = (req, res) => {
         if (err) console.log(err)
 
         else {
-            if (data.applicationTracking.num < 6) {
+            if ((data.applicationTracking.num < 6) && (data.applicationTracking.num > 0)) {
                 Consumer.findOneAndUpdate({ "ApplicationID": req.body.applicationId }, {
                     $set: {
                         "applicationTracking":
