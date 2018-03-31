@@ -48,8 +48,6 @@ POST | /connection/delete | applicationID | Success /Error Message
 
 ## To-do List
 
-* Passport / Oauth Integration
-
 * Finalize models.
 
 * Organize client side redirects.

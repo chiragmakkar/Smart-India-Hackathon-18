@@ -5,12 +5,14 @@ const rad = require(__base + 'modules/misc/rad.js')
 
 const geo = require('./geo.js')
 const dist = require('./dist.js')
+const sendSMS = require(__base + 'modules/comm/nexmo.js')
 
 const getEstimation = (req,res) => {
     let co = geo(req.body.address)
     co.then((out) => {
         let co = out.results[0].geometry.location
         let rl = req.body.capacity
+        let ph = "+91"+req.body.phone
         let allowedNodes = []
         var ec = 0
 
@@ -70,10 +72,13 @@ const getEstimation = (req,res) => {
               "reqCapacity":parseInt(rl),
               "provider":minNode.provider
             }
-            if(!allowedNodes) {
+
+            if(allowedNodes[0] == null) {
                 res.json({"error":"No nodes found within 1KM.","code":ec})
             }
             else {
+                let smsReady = "Your estimated cost is: "+parseInt(finalEst)+" and your load-demand is: "+parseInt(rl)
+                sendSMS(ph,smsReady)
                 res.json(final)
             }
 
