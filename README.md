@@ -12,16 +12,33 @@
 
 ## Routes
 
+### Welcome Route
+
 Method | Route Address | Input Parameters | Output JSON Expectation
 --- | --- | --- | ---
 GET | / | None | Welcome Message
+
+### Authentication Routes
+
+Method | Route Address | Input Parameters | Output JSON Expectation
+--- | --- | --- | ---
 POST | /auth/register | fullName, userName, email, phone, passEnter, passConfirm | Success/Error Message
 GET | /auth/verify/:username/:code | None | Success/Error Message
 POST | /auth/verify/phone/:username | otp | Success/Error Message
 POST | /auth/login | username, password | Success Message -> Token or Error Message
 GET | /auth/logout | token (Header: x-access-token) or Params | Success/Error Message
 POST | /auth/change-password | token, oldPassword, newPassword | Success/Error Message
+
+### Estimation Routes
+
+Method | Route Address | Input Parameters | Output JSON Expectation
+--- | --- | --- | ---
 POST | /matrix/est | address, capacity | Rate Object
+
+### Connection Routes
+
+Method | Route Address | Input Parameters | Output JSON Expectation
+--- | --- | --- | ---
 POST | /connection/new | applicantName, father_husbandName, connectionAddress, contactNumber, emailAddress, permanentAddress, aadharNumber, connectionCategory, connectionType, loadDemand, voltageSupply | Success/Error Message
 POST | /connection/transfer | applicationID,transferName,aadhar,address | updatedData Object / Error Message
 POST | /connection/closure | applicationID,billNumber,billAmount,reason | updatedData Object / Error Message
