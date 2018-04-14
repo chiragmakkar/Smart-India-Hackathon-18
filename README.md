@@ -8,6 +8,8 @@
 
 > npm install
 
+> build config.js (reference: config.dummy.js in system/ )
+
 > npm start
 
 ## Routes
